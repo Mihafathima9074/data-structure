@@ -1,91 +1,78 @@
-//queue operation
+//queue
 #include<stdio.h>
 #include<stdlib.h>
 #define SIZE 10
-int queue[SIZE];
-int front = 0,rear = 0;
-void enqueue(int);
-int dequeue(void);
-void display();
-int main(void)
+int Q[SIZE];
+int front=0,rear=0;
+void main()
 {
-int opt,item;
+void enque(int);
+int deque(),item,opt;
+void display();
 do
 {
-printf("\n1.Enqueue \n2.Dequeue \n3.Display \n4.Exit \n");
-printf("\nYour option:");
-scanf("%d", &opt);
+printf("\n1.enqueue\n2.dequeue\n3.display\n4.exit\n");
+printf("\nYour option: ");
+scanf("%d",&opt);
 switch(opt)
 {
-case 1:printf("Enter item:");
-       scanf("%d",&item);
-       enqueue(item);
-       break;
-case 2:item=dequeue();
-       if (item != -1)
-       printf("\npopped value=%d",item);
-       break;
-case 3:display();
-       break;
+case 1:
+printf("enter item: ");
+scanf("%d",&item);
+enque(item);
+break;
+case 2:
+item=deque();
+if(item!=-1)
+printf("deleted value=%d\n",item);
+break;
+case 3:
+display();
+break;
 case 4:
 exit(0);
-default:
-       printf("Invalid option\n");
+}}
+while(9);
 }
-}
-while(1);
-return 0;
-}
-void enqueue(int x)
+void enque(int x) 
 {
 int temp;
-temp=(rear + 1) % SIZE;
-if(temp == front)
-{
-printf("\nQueue is full");
-}
+temp=(rear+1)%SIZE;
+if(temp==front)
+printf("queue is full\n");
 else
 {
-rear=temp;       
-queue[rear]=x;
+rear=temp;
+Q[rear]=x;
 }
 }
-int dequeue(void)
+int deque()
 {
-if(front == rear)
-{
-printf("\nQueue is empty");
+if(front==rear)
+{printf("queue is empty\n");
 return -1;
 }
-else 
-{
-front = (front + 1) %SIZE;
-return queue[front];
-}
-}
-void display(void)
-{
-int i;
-if(front == rear)
-{
-printf("\nQueue is empty");
-}
 else
 {
-printf("\nQueue elements: ");
-i=(front + 1) % SIZE;
+front=(front+1)%SIZE;
+return Q[front];
+}
+}
+void display()
+{
+int i;
+if (front==rear)
+printf("queue is empty:\n");
+else
+{
+printf("queue elements are:\n");
+i=(front+1)%SIZE;
 do
 {
-printf("%d\t",queue[i]);
-i = (i + 1) % SIZE;
+printf("%d\n",Q[i]);
+i=(i+1)%SIZE;
 }
-while(i != (rear + 1) % SIZE);
-printf("\n");
+while(i!=(rear+1)%SIZE);
 }
+return ;
 }
-
-
-
-              
-
-
