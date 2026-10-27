@@ -79,6 +79,7 @@ void difference(struct bit a[],struct bit b[],struct bit c[])
 {
 int k;
 for(k=0;k<size;++k)
-c[k].x=a[k].x & ~b[k].x;
+if(a[k].x==1)
+c[k].x=a[k].x ^ b[k].x;
 return;
 }
