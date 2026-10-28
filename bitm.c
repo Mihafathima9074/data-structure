@@ -48,15 +48,17 @@ return;
 }
 void printset(struct bit a[])
 {
-int k,c=0;
+int k,first=1;
 printf("{");
 for(k=0;k<size;++k)
+{
 if (a[k].x == 1)
 {
-if (c>0)
+if (first==0)
 printf(",");
 printf("%d", uset[k]);
-     c++;
+     first=0;
+}
 }
 printf("}\n");
 return;
